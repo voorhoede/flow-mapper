@@ -3,8 +3,9 @@ import { fetchContent } from '../../../../lib/fetch-content';
 import { AppHeader } from '../../../../components/app-header';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
 import { SuggestionList } from '../../../../components/suggestion-list';
+import { PhaseVisualisation } from '../../../../components/phase-visualisation';
 
-export default function SuggestionPage({ data, params, allPhases }) {
+export default function SuggestionPage({ data, params, allPhases, phase }) {
   return (
     <>
       <Head>
@@ -19,6 +20,9 @@ export default function SuggestionPage({ data, params, allPhases }) {
           className="prose"
           dangerouslySetInnerHTML={{ __html: data.information }}
         />
+
+        <PhaseVisualisation activePosition={phase.position - 1} />
+
         <form className="flex">
           <textarea className="border rounded"></textarea>
           <button
@@ -84,6 +88,10 @@ export async function getStaticProps({ params }) {
       allPhases {
         slug
         name
+      }
+
+      phase(filter: { slug: { eq: "${params.phaseSlug}"}}) {
+        position
       }
     }
   `;
