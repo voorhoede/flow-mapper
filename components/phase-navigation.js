@@ -27,7 +27,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
           phases
             .filter((phase) => phase.slug !== activePhase?.slug)
             .map((phase, index) => (
-              <Link key={index} href={`/phase/${phase.slug}`}>
+              <Link key={index} href={`/suggestion/${phase.slug}`}>
                    <a
                      className={`flex w-full p-2 items-center rounded-md text-gray-900 ${
                        false ? "bg-blue-500 text-white" : "bg-white text-black"
