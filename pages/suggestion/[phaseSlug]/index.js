@@ -46,8 +46,8 @@ export async function getStaticProps({ params }) {
               slug
             }
             ... on SystemElementRecord {
+              id
               name
-              slug
               icon {
                 url
               }

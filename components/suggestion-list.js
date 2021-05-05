@@ -7,7 +7,7 @@ export function SuggestionList({ suggestions, params }) {
         if (suggestion.subject.__typename === 'ProcessRecord') {
           return (
             <li key={suggestion.subject.id} className="border-b-2">
-              <Link href={`/suggestion/${params.phaseSlug}/process/${suggestion.subject.slug}`}>
+              <Link href={`/suggestion/${params.phaseSlug}/process/${suggestion.subject.id}`}>
                 <a className="block p-2">
                   <div>
                     <span className="block text-sm italic">{suggestion.relation}</span>
@@ -21,8 +21,8 @@ export function SuggestionList({ suggestions, params }) {
 
         if (suggestion.subject.__typename === 'SystemElementRecord') {
           return (
-            <li key={suggestion.subject.slug} className="border-b-2">
-              <Link href={`/suggestion/${params.phaseSlug}/element/${suggestion.subject.slug}`}>
+            <li key={suggestion.subject.id} className="border-b-2">
+              <Link href={`/suggestion/${params.phaseSlug}/element/${suggestion.subject.id}`}>
                 <a className="flex items-center p-2">
                   <img
                     style={{ background: suggestion.subject.systemClass.color.hex }}

@@ -48,7 +48,7 @@ export async function getStaticProps({ params }) {
 
   const query = /* GraphQL */`
     {
-      data: ${getRecordType[params.suggestionType]}(filter: {slug: {eq: "${params.suggestionSlug}"}}) {
+      data: ${getRecordType[params.suggestionType]}(filter: {id: {eq: "${params.suggestionId}"}}) {
         name
         information(markdown: true)
         suggestions {
@@ -58,11 +58,10 @@ export async function getStaticProps({ params }) {
             ... on ProcessRecord {
               id
               name
-              slug
             }
             ... on SystemElementRecord {
+              id
               name
-              slug
               icon {
                 url
               }
