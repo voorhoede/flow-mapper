@@ -4,7 +4,7 @@ import { fetchContent } from '../../../lib/fetch-content';
 import { PhaseNavigation } from '../../../components/phase-navigation';
 import { AppHeader } from '../../../components/app-header';
 
-export default function SlugPage({ params, phase, allPhases }) {
+export default function PhasePage({ params, phase, allPhases }) {
   return (
     <>
       <Head>

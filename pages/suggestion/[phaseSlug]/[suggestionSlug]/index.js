@@ -3,7 +3,7 @@ import { fetchContent } from '../../../../lib/fetch-content';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
 import { AppHeader } from '../../../../components/app-header';
 
-export default function SystemPage({ params, systemElement, allPhases }) {
+export default function SuggestionPage({ params, systemElement, allPhases }) {
   return (
     <>
       <Head>
