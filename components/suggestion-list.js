@@ -28,7 +28,7 @@ export function SuggestionList({ suggestions, params }) {
                   <img
                     style={{ background: suggestion.subject.systemClass.color.hex }}
                     className="flex-shrink-0 w-10 h-10 mr-4 rounded-full"
-                    src={suggestion.subject.icon.url}
+                    src={`${suggestion.subject.icon.url}?rect=42,40,243,243`}
                     alt=""
                   />
                   <div>

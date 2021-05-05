@@ -15,7 +15,18 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
       <AppHeader />
       <main className="p-4 mx-auto max-w-screen-lg">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="my-4 text-xl font-semibold">{data.name}</h2>
+        <h2 className="flex items-center my-4 text-xl font-semibold">
+          {
+            data.icon
+              ? <img
+                  className="w-8 h-8 mr-2 rounded-full"
+                  src={`${data.icon.url}?rect=42,40,243,243`}
+                  alt=""
+                />
+              : <div className="bg-gray-300 w-8 h-8 mr-2 rounded" />
+          }
+          {data.name}
+        </h2>
         <div
           className="prose"
           dangerouslySetInnerHTML={{ __html: data.information }}
@@ -51,6 +62,9 @@ export async function getStaticProps({ params }) {
       data: ${getRecordType[params.suggestionType]}(filter: {id: {eq: "${params.suggestionId}"}}) {
         name
         information(markdown: true)
+        icon {
+          url
+        }
         suggestions {
           relation
           subject {
