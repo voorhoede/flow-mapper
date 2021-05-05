@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { fetchContent } from '../../../../lib/fetch-content';
 import { AppHeader } from '../../../../components/app-header';
 
-export default function SystemPage({ systemElement }) {
+export default function SuggestionPage({ systemElement }) {
   return (
     <>
       <Head>
