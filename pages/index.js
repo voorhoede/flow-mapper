@@ -13,7 +13,7 @@ export default function IndexPage({ allPhases }) {
       <AppHeader />
       <main className="p-4">
         <PhaseNavigation phases={allPhases} />
-        <p className="mt-2 font-medium text-gray-800">
+        <p className="mt-4 font-medium text-gray-800">
           Get started with a phase to explore relevant processes and elements.
         </p>
       </main>
