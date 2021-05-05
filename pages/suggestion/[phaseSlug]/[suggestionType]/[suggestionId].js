@@ -13,7 +13,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
         <link rel="icon" href="/favicon.svg"></link>
       </Head>
       <AppHeader />
-      <main className="p-4">
+      <main className="p-4 mx-auto max-w-screen-lg">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
         <h2 className="my-4 text-xl font-semibold">{data.name}</h2>
         <div

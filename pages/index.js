@@ -11,7 +11,7 @@ export default function IndexPage({ allPhases }) {
         <link rel="icon" href="/favicon.svg"></link>
       </Head>
       <AppHeader />
-      <main className="p-4">
+      <main className="p-4 mx-auto max-w-screen-lg">
         <PhaseNavigation phases={allPhases} />
         <p className="mt-4 font-medium text-gray-800">
           Get started with a phase to explore relevant processes and elements.

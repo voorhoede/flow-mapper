@@ -12,7 +12,7 @@ export default function PhasePage({ params, phase, allPhases }) {
         <link rel="icon" href="/favicon.svg"></link>
       </Head>
       <AppHeader />
-      <main className="p-4">
+      <main className="p-4 mx-auto max-w-screen-lg">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
         <h2 className="mt-4 mb-2 text-lg font-bold">Suggestions</h2>
         <SuggestionList
