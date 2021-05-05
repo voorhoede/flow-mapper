@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { fetchContent } from '../../../lib/fetch-content';
-import { PhaseNavigation } from '../../../components/phase-navigation';
 import { AppHeader } from '../../../components/app-header';
+import { PhaseNavigation } from '../../../components/phase-navigation';
+import { SuggestionList } from '../../../components/suggestion-list';
 
 export default function PhasePage({ params, phase, allPhases }) {
   return (
@@ -15,36 +15,10 @@ export default function PhasePage({ params, phase, allPhases }) {
       <main className="p-4">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
         <h2 className="my-4 text-lg font-bold">Suggestions</h2>
-        {
-          phase.suggestions.length
-          ? <ul>
-            {
-              phase.suggestions.map((suggestion) => {
-                if (suggestion.__typename === 'ProcessRecord') {
-                  return <li key={suggestion.id} className="p-2 border-b-2">
-                    {suggestion.name}
-                  </li>
-                }
-
-                if (suggestion.__typename === 'SystemElementRecord') {
-                  return <li
-                    key={suggestion.slug}
-                    className="flex p-2 border-b-2"
-                  >
-                    <div
-                      style={{ background: suggestion.systemClass.color.hex }}
-                      className="inline-block w-6 h-6 mr-2 rounded-full"
-                    />
-                    <Link href={`/suggestion/${params.phaseSlug}/${suggestion.slug}`}>
-                      <a>{suggestion.name}</a>
-                    </Link>
-                  </li>
-                }
-              })
-            }
-          </ul>
-          : null
-        }
+        <SuggestionList
+          suggestions={phase.suggestions}
+          params={params}
+        />
       </main>
     </>
   );
@@ -63,18 +37,24 @@ export async function getStaticProps({ params }) {
       phase(filter: { slug: { eq: "${params.phaseSlug}"}}) {
         name
         suggestions {
-          __typename
-          ... on ProcessRecord {
-            id
-            name
-          }
-          ... on SystemElementRecord {
-            name
-            slug
-            systemClass {
+          relation
+          subject {
+            __typename
+            ... on ProcessRecord {
               id
-              color {
-                hex
+              name
+            }
+            ... on SystemElementRecord {
+              name
+              slug
+              icon {
+                url
+              }
+              systemClass {
+                id
+                color {
+                  hex
+                }
               }
             }
           }
