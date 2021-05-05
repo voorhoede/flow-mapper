@@ -23,14 +23,6 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
 
         <PhaseVisualisation activePosition={phase.position - 1} />
 
-        <form className="flex">
-          <textarea className="border rounded"></textarea>
-          <button
-            className="mx-4 mb-3 py-2 px-4 bg-indigo-900 text-white rounded"
-          >
-            Copy
-          </button>
-        </form>
         <h2 className="my-4 text-lg font-bold">This process relates to</h2>
         <SuggestionList
           suggestions={data.suggestions}
