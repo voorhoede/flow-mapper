@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { Popover } from '@headlessui/react';
+import { Menu } from '@headlessui/react';
 
 export function PhaseNavigation({ phases, activeSlug }) {
   const activePhase = phases.find((phase) => phase.slug === activeSlug);
 
   return (
-    <Popover className="relative">
-      <Popover.Button
+    <Menu as="nav" className="relative">
+      <Menu.Button
         className="flex rounded-md items-center w-full px-2 py-2 bg-gray-600 text-white"
       >
         { activePhase ? activePhase.name : 'Choose a phase'}
@@ -17,28 +17,34 @@ export function PhaseNavigation({ phases, activeSlug }) {
           alt=""
           className="absolute right-4"
         />
-      </Popover.Button>
+      </Menu.Button>
 
-      <Popover.Panel
-        as="nav"
+      <Menu.Items
         className="absolute left-0 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg"
       >
         {
           phases
-            .filter((phase) => phase.slug !== activePhase?.slug)
             .map((phase, index) => (
-              <Link key={index} href={`/suggestion/${phase.slug}`}>
-                   <a
-                     className={`flex w-full p-2 items-center rounded-md text-gray-900 ${
-                       false ? "bg-blue-500 text-white" : "bg-white text-black"
-                     }`}
-                   >
+              <Menu.Item
+                as={NextLink}
+                key={index}
+                href={`/suggestion/${phase.slug}`}
+                className={`flex w-full p-2 items-center rounded-md text-gray-900 ${
+                  phase.slug === activePhase?.slug ? 'font-semibold' : ''
+                }`}
+              >
                 {phase.name}
-                </a>
-              </Link>
+              </Menu.Item>
             ))
         }
-      </Popover.Panel>
-    </Popover>
+      </Menu.Items>
+    </Menu>
   );
+}
+
+// Next.js (v10.1.3) does not pass all props to the link
+function NextLink({ href, children, ...rest }) {
+  return (
+    <Link href={href}><a {...rest}>{children}</a></Link>
+  )
 }
