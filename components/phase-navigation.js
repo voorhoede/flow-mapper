@@ -10,13 +10,9 @@ export function PhaseNavigation({ phases, activeSlug }) {
         className="flex rounded-md items-center w-full px-2 py-2 bg-gray-600 text-white"
       >
         { activePhase ? activePhase.name : 'Choose a phase'}
-        <img
-          src="/icons/chevron-down.svg"
-          width="20"
-          height="20"
-          alt=""
-          className="absolute right-4"
-        />
+        <svg className="absolute right-4 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
       </Menu.Button>
 
       <Menu.Items
