@@ -14,7 +14,9 @@ export default function PhasePage({ params, phase, allPhases }) {
       <AppHeader />
       <main className="p-4 mx-auto max-w-screen-lg">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="mt-4 mb-2 text-lg font-bold">Suggestions</h2>
+        <h2 className="mb-2">
+          Common processes and system elements<br/>in this phase:
+        </h2>
         <SuggestionList
           suggestions={phase.suggestions}
           params={params}
@@ -24,7 +26,7 @@ export default function PhasePage({ params, phase, allPhases }) {
   );
 }
 
-export function getStaticPaths(x) {
+export function getStaticPaths() {
   return {
     paths: [],
     fallback: 'blocking',
