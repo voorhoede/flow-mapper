@@ -8,7 +8,8 @@ export function SuggestionList({ suggestions, params }) {
           return (
             <li key={suggestion.subject.id} className="border-b-2">
               <Link href={`/suggestion/${params.phaseSlug}/process/${suggestion.subject.slug}`}>
-                <a className="block p-2">
+                <a className="flex items-center p-2">
+                  <div className="bg-gray-300 flex-shrink-0 w-10 h-10 mr-4 rounded"></div>
                   <div>
                     <span className="block text-sm italic">{suggestion.relation}</span>
                     <span className="block font-semibold">{suggestion.subject.name}</span>

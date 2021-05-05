@@ -23,7 +23,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
 
         <PhaseVisualisation activePosition={phase.position - 1} />
 
-        <h2 className="my-4 text-lg font-bold">This process relates to</h2>
+        <h2 className="mt-4 mb-2 text-lg font-bold">This process relates to</h2>
         <SuggestionList
           suggestions={data.suggestions}
           params={params}

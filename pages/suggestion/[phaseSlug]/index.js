@@ -14,7 +14,7 @@ export default function PhasePage({ params, phase, allPhases }) {
       <AppHeader />
       <main className="p-4">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="my-4 text-lg font-bold">Suggestions</h2>
+        <h2 className="mt-4 mb-2 text-lg font-bold">Suggestions</h2>
         <SuggestionList
           suggestions={phase.suggestions}
           params={params}
