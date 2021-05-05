@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { fetchContent } from '../../../../lib/fetch-content';
-import { StructuredText } from 'react-datocms';
 import { AppHeader } from '../../../../components/app-header';
 
 export default function SystemPage({ systemElement }) {
@@ -12,9 +11,10 @@ export default function SystemPage({ systemElement }) {
       </Head>
       <AppHeader />
       <h2 className="p-4 text-xl font-semibold">{systemElement.name}</h2>
-      <div className="prose px-4">
-        <StructuredText data={systemElement.info} />
-      </div>
+      <div
+        className="prose px-4"
+        dangerouslySetInnerHTML={{ __html: systemElement.information }}
+      />
       <form className="flex">
         <textarea className="border rounded"></textarea>
         <button
@@ -39,9 +39,7 @@ export async function getStaticProps({ params }) {
     {
       systemElement(filter: {slug: {eq: "${params.suggestionSlug}"}}) {
         name
-        info {
-          value
-        }
+        information(markdown: true)
       }
     }
   `;
