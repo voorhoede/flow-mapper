@@ -43,6 +43,7 @@ export async function getStaticProps({ params }) {
             ... on ProcessRecord {
               id
               name
+              slug
             }
             ... on SystemElementRecord {
               name

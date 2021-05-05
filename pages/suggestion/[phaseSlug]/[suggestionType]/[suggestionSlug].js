@@ -4,7 +4,7 @@ import { AppHeader } from '../../../../components/app-header';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
 import { SuggestionList } from '../../../../components/suggestion-list';
 
-export default function SuggestionPage({ params, systemElement, allPhases }) {
+export default function SuggestionPage({ data, params, allPhases }) {
   return (
     <>
       <Head>
@@ -14,10 +14,10 @@ export default function SuggestionPage({ params, systemElement, allPhases }) {
       <AppHeader />
       <main className="p-4">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="my-4 text-xl font-semibold">{systemElement.name}</h2>
+        <h2 className="my-4 text-xl font-semibold">{data.name}</h2>
         <div
           className="prose"
-          dangerouslySetInnerHTML={{ __html: systemElement.information }}
+          dangerouslySetInnerHTML={{ __html: data.information }}
         />
         <form className="flex">
           <textarea className="border rounded"></textarea>
@@ -29,7 +29,7 @@ export default function SuggestionPage({ params, systemElement, allPhases }) {
         </form>
         <h2 className="my-4 text-lg font-bold">This process relates to</h2>
         <SuggestionList
-          suggestions={systemElement.suggestions}
+          suggestions={data.suggestions}
           params={params}
         />
       </main>
@@ -45,9 +45,14 @@ export function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const getRecordType = {
+    element: 'systemElement',
+    process: 'process'
+  }
+
   const query = /* GraphQL */`
     {
-      systemElement(filter: {slug: {eq: "${params.suggestionSlug}"}}) {
+      data: ${getRecordType[params.suggestionType]}(filter: {slug: {eq: "${params.suggestionSlug}"}}) {
         name
         information(markdown: true)
         suggestions {
@@ -57,6 +62,7 @@ export async function getStaticProps({ params }) {
             ... on ProcessRecord {
               id
               name
+              slug
             }
             ... on SystemElementRecord {
               name
