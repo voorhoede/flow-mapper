@@ -8,7 +8,7 @@ export function SuggestionList({ suggestions, params }) {
           return (
             <li key={suggestion.subject.id} className="border-b-2">
               <Link href={`/suggestion/${params.phaseSlug}/process/${suggestion.subject.id}`}>
-                <a className="flex items-center p-2">
+                <a className="flex items-center p-2 pr-0">
                   <div className="bg-gray-300 flex-shrink-0 w-10 h-10 mr-4 rounded"></div>
                   <div className="flex flex-grow items-center justify-between">
                     <div>
@@ -29,7 +29,7 @@ export function SuggestionList({ suggestions, params }) {
           return (
             <li key={suggestion.subject.id} className="border-b-2">
               <Link href={`/suggestion/${params.phaseSlug}/element/${suggestion.subject.id}`}>
-                <a className="flex items-center p-2">
+                <a className="flex items-center p-2 pr-0">
                   <img
                     style={{ background: suggestion.subject.systemClass.color.hex }}
                     className="flex-shrink-0 w-10 h-10 mr-4 rounded-full"
