@@ -14,7 +14,7 @@ export default function PhasePage({ params, phase, allPhases }) {
       <AppHeader />
       <main className="p-4 mx-auto max-w-screen-lg">
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="mb-2">
+        <h2 className="font-medium text-gray-800 mb-2">
           Common processes and system elements<br/>in this phase:
         </h2>
         <SuggestionList
@@ -53,7 +53,6 @@ export async function getStaticProps({ params }) {
                 url
               }
               systemClass {
-                id
                 color {
                   hex
                 }

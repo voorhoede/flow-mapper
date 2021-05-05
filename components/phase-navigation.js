@@ -5,7 +5,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
   const activePhase = phases.find((phase) => phase.slug === activeSlug);
 
   return (
-    <Menu as="nav" className="relative mb-4">
+    <Menu as="nav" className="relative mb-5">
       <Menu.Button
         className="flex rounded-md items-center w-full px-2 py-2 bg-gray-600 text-white"
       >

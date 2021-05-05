@@ -9,7 +9,7 @@ const partsPathData = [
 
 export function PhaseVisualisation({ activePosition }) {
   return (
-    <svg className='h-36 w-full' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 110'>
+    <svg className='h-36' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 110'>
       <g fill='currentColor' className='text-gray-300'>
         {
           partsPathData.map((pathData, index) =>
