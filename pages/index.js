@@ -10,13 +10,15 @@ export default function IndexPage({ allPhases }) {
         <title>Flow Mapper</title>
         <link rel="icon" href="/favicon.svg"></link>
       </Head>
-      <AppHeader />
-      <main className="p-4 mx-auto max-w-screen-lg">
-        <PhaseNavigation phases={allPhases} />
-        <p className="mt-4 font-medium text-gray-800">
-          Get started with a phase to explore relevant processes and elements.
-        </p>
-      </main>
+      <div className="flex flex-col min-h-screen">
+        <AppHeader />
+        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4">
+          <PhaseNavigation phases={allPhases} />
+          <p className="mt-4 font-medium text-gray-800">
+            Get started with a phase to explore relevant processes and elements.
+          </p>
+        </main>
+      </div>
     </>
   );
 }

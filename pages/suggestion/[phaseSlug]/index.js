@@ -11,17 +11,19 @@ export default function PhasePage({ params, phase, allPhases }) {
         <title>{`${phase.name} | Flow Mapper`}</title>
         <link rel="icon" href="/favicon.svg"></link>
       </Head>
-      <AppHeader />
-      <main className="p-4 mx-auto max-w-screen-lg">
-        <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="font-medium text-gray-800 mb-2">
-          Common processes and system elements<br/>in this phase:
-        </h2>
-        <SuggestionList
-          suggestions={phase.suggestions}
-          params={params}
-        />
-      </main>
+      <div className="flex flex-col min-h-screen">
+        <AppHeader />
+        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4">
+          <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
+          <h2 className="font-medium text-gray-800 mb-2">
+            Common processes and system elements in this phase:
+          </h2>
+          <SuggestionList
+            suggestions={phase.suggestions}
+            params={params}
+          />
+        </main>
+      </div>
     </>
   );
 }
