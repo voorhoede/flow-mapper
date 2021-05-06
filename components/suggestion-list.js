@@ -41,8 +41,15 @@ export function SuggestionList({ suggestions, params }) {
                   />
                   <div className="flex flex-grow items-center justify-between">
                     <div>
-                      <span className="block text-sm italic">{suggestion.relation}</span>
-                      <span className="block font-semibold">{suggestion.subject.name}</span>
+                      <span className="block text-sm italic">
+                        {suggestion.relation}
+                      </span>
+                      <span className="block font-semibold">
+                        {suggestion.subject.name}
+                        <small className="font-normal italic">
+                          {' '}({suggestion.subject.systemClass.name})
+                        </small>
+                      </span>
                     </div>
                     <img
                       src="/icons/chevron-right.svg"

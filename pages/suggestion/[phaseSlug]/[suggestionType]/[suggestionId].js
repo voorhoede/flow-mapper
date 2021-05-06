@@ -27,25 +27,33 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
             dangerouslySetInnerHTML={{ __html: data.information }}
           />
 
-          <h3 className="text-lg font-semibold mb-4">On the canvas</h3>
-          <div className="flex mb-8">
-            <PhaseVisualisation activePosition={phase.position - 1} />
-            <div className="w-48 ml-8 pl-8 border-l-2">
-              <span className="inline-block mb-2">
-                {params.suggestionType === 'element'
-                  ? 'As a system element'
-                  : `As a process card with "${data.name}" in ${phase.name}`
-                }
-              </span>
+          <h3 className="text-lg font-semibold mb-4">How to add this to the canvas?</h3>
+          <div className="sm:flex mb-8">
+            <div className="relative">
+              <PhaseVisualisation activePosition={phase.position - 1} />
               {data.icon && (
                 <img
-                  className="w-24 h-24 self-end rounded-full"
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 self-end rounded-full"
                   src={`${data.icon.url}?rect=42,40,243,243`}
                   alt=""
                   width="100"
                   height="100"
                 />
               )}
+            </div>
+            <div className="prose mt-4 sm:mt-0 sm:w-72 sm:ml-4 sm:pl-4 sm:border-l-2">
+              {params.suggestionType === "element" ? (
+                  <p className="inline-block mb-2">
+                    Add a <strong>{data.name}</strong> system element to the{' '}
+                    <strong>{data.systemClass.name}</strong> class in the{' '}
+                    <strong>{phase.name}</strong> phase.
+                  </p>
+                ) : (
+                  <p className="inline-block mb-2">
+                    Add a <strong>{data.name}</strong> process card to the{' '}
+                    <strong>{phase.name}</strong> phase.
+                  </p>
+                )}
             </div>
           </div>
 
@@ -85,6 +93,7 @@ export async function getStaticProps({ params }) {
         }
         ${params.suggestionType === 'element'
           ? `systemClass {
+              name
               color {
                 hex
               }
@@ -106,6 +115,7 @@ export async function getStaticProps({ params }) {
                 url
               }
               systemClass {
+                name
                 color {
                   hex
                 }

@@ -15,7 +15,7 @@ export default function PhasePage({ params, phase, allPhases }) {
         <AppHeader />
         <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 shadow">
           <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-          <h2 className="font-medium text-gray-800 mb-2">
+          <h2 className="font-medium text-gray-800 mb-4">
             Common processes and system elements in this phase:
           </h2>
           <SuggestionList
