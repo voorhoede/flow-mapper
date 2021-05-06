@@ -6,7 +6,7 @@ export function SuggestionList({ suggestions, params }) {
       {suggestions.map((suggestion) => {
         if (suggestion.subject.__typename === 'ProcessRecord') {
           return (
-            <li key={suggestion.subject.id} className="border-b-2">
+            <li key={suggestion.subject.id} className="border-b-2 hover:bg-gray-50">
               <Link href={`/suggestion/${params.phaseSlug}/process/${suggestion.subject.id}`}>
                 <a className="flex items-center p-2 pr-0">
                   <div className="bg-gray-300 flex-shrink-0 w-10 h-10 mr-4 rounded"></div>
@@ -30,7 +30,7 @@ export function SuggestionList({ suggestions, params }) {
 
         if (suggestion.subject.__typename === 'SystemElementRecord') {
           return (
-            <li key={suggestion.subject.id} className="border-b-2">
+            <li key={suggestion.subject.id} className="border-b-2 hover:bg-gray-50">
               <Link href={`/suggestion/${params.phaseSlug}/element/${suggestion.subject.id}`}>
                 <a className="flex items-center p-2 pr-0">
                   <img

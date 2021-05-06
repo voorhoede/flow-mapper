@@ -14,7 +14,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
       </Head>
       <div className="flex flex-col min-h-screen">
         <AppHeader />
-        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 transition-all">
+        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 shadow transition-all">
           <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
           <h2
             className="flex items-center text-3xl font-semibold pl-2 mb-4 border-l-4"

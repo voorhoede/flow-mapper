@@ -13,7 +13,7 @@ export default function PhasePage({ params, phase, allPhases }) {
       </Head>
       <div className="flex flex-col min-h-screen">
         <AppHeader />
-        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4">
+        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 shadow">
           <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
           <h2 className="font-medium text-gray-800 mb-2">
             Common processes and system elements in this phase:

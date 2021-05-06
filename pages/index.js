@@ -12,7 +12,7 @@ export default function IndexPage({ allPhases }) {
       </Head>
       <div className="flex flex-col min-h-screen">
         <AppHeader />
-        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4">
+        <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 shadow">
           <PhaseNavigation phases={allPhases} />
           <p className="mt-4 font-medium text-gray-800">
             Get started with a phase to explore relevant processes and elements.

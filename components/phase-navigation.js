@@ -7,7 +7,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
   return (
     <Menu as="nav" className="relative mb-5">
       <Menu.Button
-        className="flex rounded-md items-center w-full px-2 py-2 bg-gray-600 text-white"
+        className="flex rounded-md items-center w-full px-2 py-2 bg-gray-600 hover:bg-gray-700 text-white"
       >
         { activePhase ? activePhase.name : 'Choose a phase'}
         <img
@@ -20,7 +20,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
       </Menu.Button>
 
       <Menu.Items
-        className="absolute left-0 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg"
+        className="absolute left-0 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg overflow-hidden"
       >
         {
           phases
@@ -29,7 +29,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
                 as={NextLink}
                 key={index}
                 href={`/suggestion/${phase.slug}`}
-                className={`flex w-full p-2 items-center rounded-md text-gray-900 ${
+                className={`flex w-full p-2 items-center text-gray-900 hover:bg-gray-100 ${
                   phase.slug === activePhase?.slug ? 'font-semibold' : ''
                 }`}
               >
