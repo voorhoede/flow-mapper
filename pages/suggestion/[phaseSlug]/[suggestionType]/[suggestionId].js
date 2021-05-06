@@ -44,7 +44,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
             <div className="prose mt-4 sm:mt-0 sm:w-72 sm:ml-4 sm:pl-4 sm:border-l-2">
               {params.suggestionType === "element" ? (
                   <p className="inline-block mb-2">
-                    Add a <strong>{data.name}</strong> system element to the{' '}
+                    Add a <strong>{data.name}</strong> system element card to the{' '}
                     <strong>{data.systemClass.name}</strong> class in the{' '}
                     <strong>{phase.name}</strong> phase.
                   </p>
