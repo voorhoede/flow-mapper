@@ -15,9 +15,12 @@ export function SuggestionList({ suggestions, params }) {
                       <span className="block text-sm italic">{suggestion.relation}</span>
                       <span className="block font-semibold">{suggestion.subject.name}</span>
                     </div>
-                    <svg className="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <img
+                      src="/icons/chevron-right.svg"
+                      width="20"
+                      height="20"
+                      alt=""
+                    />
                   </div>
                 </a>
               </Link>
@@ -41,9 +44,12 @@ export function SuggestionList({ suggestions, params }) {
                       <span className="block text-sm italic">{suggestion.relation}</span>
                       <span className="block font-semibold">{suggestion.subject.name}</span>
                     </div>
-                    <svg className="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <img
+                      src="/icons/chevron-right.svg"
+                      width="20"
+                      height="20"
+                      alt=""
+                    />
                   </div>
                 </a>
               </Link>
