@@ -20,7 +20,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
       </Menu.Button>
 
       <Menu.Items
-        className="absolute left-0 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg overflow-hidden"
+        className="absolute z-10 left-0 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg overflow-hidden"
       >
         {
           phases
