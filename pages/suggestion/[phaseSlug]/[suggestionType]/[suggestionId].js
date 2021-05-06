@@ -17,10 +17,15 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
         <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 shadow transition-all">
           <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
           <h2
-            className="flex items-center text-3xl font-semibold pl-2 mb-4 border-l-4"
+            className="items-center text-3xl font-semibold pl-2 mb-4 border-l-4"
             style={{ borderColor: data.systemClass?.color.hex || 'text-gray-300' }}
           >
             {data.name}
+            {data.systemClass?.name && (
+              <small className="text-lg font-normal italic">
+                {' '}({data.systemClass.name})
+              </small>
+            )}
           </h2>
           <div
             className="flex prose mb-8"
@@ -28,7 +33,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
           />
 
           <h3 className="text-lg font-semibold mb-4">How to add this to the canvas?</h3>
-          <div className="sm:flex mb-8">
+          <div className="bg-gray-50 mb-8 p-4 border rounded sm:flex ">
             <div className="relative">
               <PhaseVisualisation activePosition={phase.position - 1} />
               {data.icon && (
@@ -41,19 +46,29 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
                 />
               )}
             </div>
-            <div className="prose mt-4 sm:mt-0 sm:w-72 sm:ml-4 sm:pl-4 sm:border-l-2">
-              {params.suggestionType === "element" ? (
-                  <p className="inline-block mb-2">
-                    Add a <strong>{data.name}</strong> system element card to the{' '}
-                    <strong>{data.systemClass.name}</strong> class in the{' '}
-                    <strong>{phase.name}</strong> phase.
-                  </p>
-                ) : (
-                  <p className="inline-block mb-2">
-                    Add a <strong>{data.name}</strong> process card to the{' '}
-                    <strong>{phase.name}</strong> phase.
-                  </p>
-                )}
+            <div className="prose mt-4 sm:mt-0 sm:w-72 sm:ml-4 sm:pl-4 sm:border-l">
+            {params.suggestionType === "element" ? (
+                <p className="inline-block mb-2">
+                  Specify the <strong>{data.name}</strong> on a post-it (
+                  <span
+                    className="inline-block w-3 h-3 rounded"
+                    style={{
+                      backgroundColor: data.systemClass?.color.hex,
+                      marginBottom: "-1px",
+                    }}
+                  ></span>){' '}
+                  inside the{' '}
+                  <strong style={{ color: "inherit" }}>
+                    {data.systemClass.name}
+                  </strong>{' '}
+                  ring in the <strong>{phase.name}</strong> phase of the canvas.
+                </p>
+              ) : (
+                <p className="inline-block mb-2">
+                  Add a <strong>{data.name}</strong> card to the{' '}
+                  <strong>{phase.name}</strong> phase of the canvas.
+                </p>
+              )}
             </div>
           </div>
 
