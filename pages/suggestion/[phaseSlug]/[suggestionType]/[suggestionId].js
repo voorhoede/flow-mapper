@@ -58,7 +58,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
                     }}
                   ></span>){' '}
                   inside the{' '}
-                  <strong style={{ color: "inherit" }}>
+                  <strong>
                     {data.systemClass.name}
                   </strong>{' '}
                   ring in the <strong>{phase.name}</strong> phase of the canvas.
