@@ -10,7 +10,8 @@ export default function PhasePage({ params, phase, allPhases }) {
     <>
       <Head>
         <title>{`${phase.name} | Flow Mapper`}</title>
-        <link rel="icon" href="/favicon.svg"></link>
+        <link rel="icon" href="/favicon.svg" />
+        <meta property="og:image" content={phase.image.url} />
       </Head>
       <div className="flex flex-col min-h-screen">
         <AppHeader />
@@ -34,6 +35,9 @@ export const getServerSideProps = withSecret(async ({ params }) => {
     {
       phase(filter: { slug: { eq: "${params.phaseSlug}"}}) {
         name
+        image {
+          url
+        }
         suggestions {
           relation
           subject {
