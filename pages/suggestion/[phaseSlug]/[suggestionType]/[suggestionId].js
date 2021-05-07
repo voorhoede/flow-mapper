@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import { fetchContent } from '../../../../lib/fetch-content';
 import { AppHeader } from '../../../../components/app-header';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
@@ -7,6 +8,8 @@ import { SuggestionList } from '../../../../components/suggestion-list';
 import { PhaseVisualisation } from '../../../../components/phase-visualisation';
 
 export default function SuggestionPage({ data, params, allPhases, phase }) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -17,6 +20,9 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
         <AppHeader />
         <main className="bg-white flex-grow w-full mx-auto max-w-screen-lg p-4 shadow transition-all">
           <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
+          <button onClick={() => router.back()} className="hover:underline mb-4">
+            ← Go back
+          </button>
           <h2
             className="items-center text-3xl font-semibold pl-2 mb-4 border-l-4"
             style={{ borderColor: data.systemClass?.color.hex || 'text-gray-300' }}
