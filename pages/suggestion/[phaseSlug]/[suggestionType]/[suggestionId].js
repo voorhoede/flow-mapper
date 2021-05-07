@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { fetchContent } from '../../../../lib/fetch-content';
+import { withSecret } from '../../../../lib/with-secret';
 import { AppHeader } from '../../../../components/app-header';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
 import { SuggestionList } from '../../../../components/suggestion-list';
@@ -88,14 +89,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
   );
 }
 
-export function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
-}
-
-export async function getStaticProps({ params }) {
+export const getServerSideProps = withSecret(async ({ params }) => {
   const getRecordType = {
     element: 'systemElement',
     process: 'process'
@@ -167,4 +161,4 @@ export async function getStaticProps({ params }) {
       ...await fetchContent(query),
     },
   };
-}
+});
