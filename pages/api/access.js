@@ -15,7 +15,7 @@ export default async function handler(request, response) {
       websiteEnvironment.secret
     }; Max-Age=${
       60 * 60 * 24 * 90
-    }; Path=/; Secure; HttpOnly; SameSite=Strict`]
+    }; Path=/; Secure; HttpOnly; SameSite=Lax`]
   );
   response.redirect('/')
 }
