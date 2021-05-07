@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { fetchContent } from '../lib/fetch-content';
+import { withSecret } from '../lib/with-secret';
 import { PhaseNavigation } from '../components/phase-navigation';
 import { AppHeader } from '../components/app-header';
 
@@ -23,7 +24,7 @@ export default function IndexPage({ allPhases }) {
   );
 }
 
-export async function getStaticProps() {
+export const getServerSideProps = withSecret(async () => {
   const query = /* GraphQL */`
     {
       allPhases {
@@ -38,4 +39,4 @@ export async function getStaticProps() {
       ...await fetchContent(query),
     },
   };
-}
+});
