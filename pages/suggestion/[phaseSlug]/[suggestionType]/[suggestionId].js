@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { fetchContent } from '../../../../lib/fetch-content';
 import { AppHeader } from '../../../../components/app-header';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
@@ -47,7 +48,7 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
               )}
             </div>
             <div className="prose mt-4 sm:mt-0 sm:w-72 sm:ml-4 sm:pl-4 sm:border-l">
-            {params.suggestionType === "element" ? (
+              {params.suggestionType === "element" ? (
                 <p className="inline-block mb-2">
                   Specify the <strong>{data.name}</strong> on a post-it (
                   <span
@@ -56,12 +57,9 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
                       backgroundColor: data.systemClass?.color.hex,
                       marginBottom: "-1px",
                     }}
-                  ></span>){' '}
-                  inside the{' '}
-                  <strong>
-                    {data.systemClass.name}
-                  </strong>{' '}
-                  ring in the <strong>{phase.name}</strong> phase of the canvas.
+                  ></span>
+                  ) inside the <strong>{data.systemClass.name}</strong> ring in
+                  the <strong>{phase.name}</strong> phase of the canvas.
                 </p>
               ) : (
                 <p className="inline-block mb-2">
@@ -72,13 +70,18 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold mb-4">
-            This process relates to
-          </h3>
-          <SuggestionList
-            suggestions={data.suggestions}
-            params={params}
-          />
+          {data.suggestions.length > 0 ? (
+            <>
+              <h3 className="text-lg font-semibold mb-4">
+                This {params.suggestionType} relates to
+              </h3>
+              <SuggestionList suggestions={data.suggestions} params={params} />
+            </>
+          ) : (
+            <Link href="/">
+              <a className="hover:underline mb-4">← Start over</a>
+            </Link>
+          )}
         </main>
       </div>
     </>
