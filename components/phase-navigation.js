@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Menu } from '@headlessui/react';
 
 export function PhaseNavigation({ phases, activeSlug }) {
+  const router = useRouter();
+
   const activePhase = phases.find((phase) => phase.slug === activeSlug);
 
   return (
@@ -28,7 +31,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
               <Menu.Item
                 as={NextLink}
                 key={index}
-                href={`/suggestion/${phase.slug}`}
+                href={`/suggestion/${router.query.canvasId}/${phase.slug}`}
                 className={`flex w-full p-2 items-center text-gray-900 hover:bg-gray-100 ${
                   phase.slug === activePhase?.slug ? 'font-semibold' : ''
                 }`}
