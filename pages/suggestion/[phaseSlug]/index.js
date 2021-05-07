@@ -47,10 +47,16 @@ export async function getStaticProps({ params }) {
             ... on ProcessRecord {
               id
               name
+              phase {
+                slug
+              }
             }
             ... on SystemElementRecord {
               id
               name
+              phase {
+                slug
+              }
               icon {
                 url
               }
