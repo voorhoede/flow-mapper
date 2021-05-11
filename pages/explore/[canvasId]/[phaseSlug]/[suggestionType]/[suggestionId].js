@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { fetchContent } from '../../../../../lib/fetch-content';
 import { withSecret } from '../../../../../lib/with-secret';
-import { CanvasLayout } from '../../../../../components/canvas-layout';
 import { PhaseNavigation } from '../../../../../components/phase-navigation';
 import { SuggestionList } from '../../../../../components/suggestion-list';
 import { PhaseVisualisation } from '../../../../../components/phase-visualisation';
@@ -17,7 +16,6 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
         <title>Flow Mapper</title>
         <link rel="icon" href="/favicon.svg"></link>
       </Head>
-      <CanvasLayout canvasId={params.canvasId}>
         <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
         <button onClick={() => router.back()} className="hover:underline mb-4">
           ← Go back
@@ -87,7 +85,6 @@ export default function SuggestionPage({ data, params, allPhases, phase }) {
             <a className="hover:underline mb-4">← Start over</a>
           </Link>
         )}
-      </CanvasLayout>
     </>
   );
 }

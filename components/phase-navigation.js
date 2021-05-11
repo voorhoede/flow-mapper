@@ -31,7 +31,7 @@ export function PhaseNavigation({ phases, activeSlug }) {
               <Menu.Item
                 as={NextLink}
                 key={index}
-                href={`/suggestion/${router.query.canvasId}/${phase.slug}`}
+                href={`/explore/${router.query.canvasId}/${phase.slug}`}
                 className={`flex w-full p-2 items-center text-gray-900 hover:bg-gray-100 ${
                   phase.slug === activePhase?.slug ? 'font-semibold' : ''
                 }`}

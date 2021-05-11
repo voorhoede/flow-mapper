@@ -5,5 +5,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #F9FAFB; /* Tailwind Gray 50 */
+  @apply bg-gray-50;
+  @apply font-medium;
+  @apply text-gray-800;
 }

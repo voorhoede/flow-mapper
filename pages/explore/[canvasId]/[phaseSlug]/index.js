@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { fetchContent } from '../../../../lib/fetch-content';
 import { withSecret } from '../../../../lib/with-secret';
-import { CanvasLayout } from '../../../../components/canvas-layout';
 import { PhaseNavigation } from '../../../../components/phase-navigation';
 import { SuggestionList } from '../../../../components/suggestion-list';
 
@@ -13,16 +12,14 @@ export default function PhasePage({ params, phase, allPhases }) {
         <link rel="icon" href="/favicon.svg"></link>
         <meta property="og:image" content={phase.image.url} />
       </Head>
-      <CanvasLayout canvasId={params.canvasId}>
-        <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
-        <h2 className="font-medium text-gray-800 mb-4">
-          Common processes and system elements in this phase:
-        </h2>
-        <SuggestionList
-          suggestions={phase.suggestions}
-          params={params}
-        />
-      </CanvasLayout>
+      <PhaseNavigation phases={allPhases} activeSlug={params.phaseSlug} />
+      <h2 className="mb-4">
+        Common processes and system elements in this phase:
+      </h2>
+      <SuggestionList
+        suggestions={phase.suggestions}
+        params={params}
+      />
     </>
   );
 }
